@@ -3,4 +3,55 @@
   <groupId>com.sample</groupId>
   <artifactId>diviewerMaven</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <!-- 文字コードとJavaのバージョンの設定 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- 筆者の環境ではバージョンは8に設定します -->
+        <!-- java.version>13.0.2</java.version -->
+        <maven.compiler.source>6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
+
+    <!-- プラグインの設定 -->
+    <build>
+  <plugins>
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.0.2</version>
+    <configuration>
+        <archive>
+            <manifest>
+                <mainClass>diviewerMaven.HelloWorld</mainClass>
+                <addClasspath>true</addClasspath>
+                <addExtensions>true</addExtensions>
+                <packageName></packageName>
+            </manifest>
+        </archive>
+    </configuration>
+    </plugin>
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+            <archive>
+              <manifest>
+                <mainClass>diviewerMaven.HelloWorld</mainClass>
+              </manifest>
+            </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+  </plugins>
+</build>
 </project>
